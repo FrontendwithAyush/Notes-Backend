@@ -7,8 +7,7 @@ var jwt = require("jsonwebtoken");
 var fetchuser = require("../middleware/fetchuser");
 const JWT_SECRET = "signAyush";
 
-
-router.get('/test', (req, res) => {
+router.get("/test", (req, res) => {
   res.send("Auth route working ✅");
 });
 //ROUTE 1 : create a user using:POST "/api/auth/createUser". no login required

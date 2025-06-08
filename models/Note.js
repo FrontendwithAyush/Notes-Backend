@@ -8,15 +8,35 @@ const NotesSchema = new Schema({
   },
   title: {
     type: String,
-    required: true,
+    default: "",
   },
   description: {
     type: String,
-    required: true,
+    default: "",
   },
   tag: {
     type: String,
     default: "general",
+  },
+  company: {
+    type: String,
+    default: "",
+  },
+  jobLink: {
+    type: String,
+    default: "",
+  },
+  location: {
+    type: String,
+    default: "",
+  },
+  status: {
+    type: String,
+    default: "",
+  },
+  source: {
+    type: String,
+    default: "",
   },
   date: {
     type: Date,

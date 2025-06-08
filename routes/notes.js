@@ -27,7 +27,16 @@ router.post(
   ],
   async (req, res) => {
     try {
-      const { title, description, tag } = req.body;
+      const {
+        title,
+        description,
+        tag,
+        company,
+        jobLink,
+        location,
+        status,
+        source,
+      } = req.body;
       //if there are errors,return bad request and errors
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
@@ -37,6 +46,11 @@ router.post(
         title,
         description,
         tag,
+        company,
+        jobLink,
+        location,
+        status,
+        source,
         user: req.user.id,
       });
       const savedNote = await note.save();
@@ -50,7 +64,16 @@ router.post(
 
 //ROUTE 3 : update an existing nte using: put "/api/notes/updatenote". login required
 router.put("/updatenote/:id", fetchuser, async (req, res) => {
-  const { title, description, tag } = req.body;
+  const {
+    title,
+    description,
+    tag,
+    company,
+    jobLink,
+    location,
+    status,
+    source,
+  } = req.body;
   try {
     //create a note object
     const newNote = {};
@@ -63,7 +86,21 @@ router.put("/updatenote/:id", fetchuser, async (req, res) => {
     if (tag) {
       newNote.tag = tag;
     }
-
+    if (company) {
+      newNote.company = company;
+    }
+    if (jobLink) {
+      newNote.jobLink = jobLink;
+    }
+    if (location) {
+      newNote.location = location;
+    }
+    if (status) {
+      newNote.status = status;
+    }
+    if (source) {
+      newNote.source = source;
+    }
     //find the note to be updated and update it
     let note = await Note.findById(req.params.id);
     if (!note) {
